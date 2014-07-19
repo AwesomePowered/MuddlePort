@@ -36,15 +36,16 @@ public class MuddlePort extends JavaPlugin implements Listener {
                   }
     }
 
+
     public void randomTeleport(Player p) {
         Location teleportTo = new Location(p.getWorld(), randInt(minX, maxX), 100, randInt(minZ, maxZ));
         Biome biome = teleportTo.getWorld().getBiome(teleportTo.getBlockX(), teleportTo.getBlockZ());
-        if (!biome.equals(Biome.valueOf("DEEP_OCEAN")) || !biome.equals(Biome.valueOf("OCEAN"))) {
-        p.teleport(teleportTo);
-            p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 140,999));
-            p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 60, 999));
-        } else {
+        if (biome.equals(Biome.valueOf("DEEP_OCEAN")) || biome.equals(Biome.valueOf("OCEAN"))) {
             randomTeleport(p);
+        } else {
+            p.teleport(teleportTo);
+            p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 160,999));
+            p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 60, 999));
         }
     }
 
