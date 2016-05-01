@@ -1,4 +1,7 @@
 name: MuddlePort
 author: LaxWasHere
 version: 0.1
+softdepend: [WorldEdit]
 main: net.awesomepowered.muddleport.MuddlePort
+commands:
+    muddle:
